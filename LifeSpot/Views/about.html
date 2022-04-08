@@ -1,0 +1,70 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>LifeSpot</title>
+    <link href="../Static/CSS/index.css" rel="stylesheet" type="text/css">
+    <script type="text/javascript" src="../Static/JS/about.js"></script>
+</head>
+
+<!--SIDEBAR-->
+<body onload="startListen()">
+    <header id="header-index">
+        <h1>LifeSpot - о проекте</h1>
+        <p>На сайте собраны прямые трансляции из улиц разных городов мира.</p>
+        <p>Все трансляции находятся в открытых источниках, в данный момент - youtube.com. </p>
+    </header>
+
+
+    <div class="slideshowContainer" id="slideContainer">
+
+        <div class="mySlides">
+            <img id="img1" class="slideImg" src="../Static/Images/cone.jpg" style="width:100%">
+            <div class="text">Lisboa</div>
+        </div>
+
+        <div class="mySlides">
+            <img class="slideImg" src="../Static/Images/1.jpg" style="width:100%">
+            <div class="text">London</div>
+        </div>
+
+        <div class="mySlides">
+            <img class="slideImg" src="../Static/Images/2.jpg" style="width:100%">
+            <div class="text">Manhattan</div>
+        </div>
+
+        <div class="mySlides">
+            <img class="slideImg" src="../Static/Images/3.jpg" style="width:100%">
+            <div class="text">Санкт-Петербург</div>
+        </div>
+
+        <a class="prev" onclick="plusSlides(-1)"><</a>
+        <a class="next" onclick="plusSlides(1)">></a>
+    </div>
+    <br>
+
+    <div style="text-align:center">
+        <span class="dot" onclick="currentSlide(1)"></span>
+        <span class="dot" onclick="currentSlide(2)"></span>
+        <span class="dot" onclick="currentSlide(3)"></span>
+        <span class="dot" onclick="currentSlide(4)"></span>
+    </div>
+
+    <div style="text-align:center">
+        <p>Для прокрутки/выбора слайдов воспользуйтесь стрелками или щелкните на одну из точек под рисунком</p>
+    </div>
+
+
+
+
+    <div class="reviews">
+        <p>Отзыв о работе сайта можно оставить здесь</p>
+        <div class="review-button">
+            <button onclick="getReview()">Оставить отзыв</button>
+        </div>
+    </div>
+</body>
+<!--FOOTER-->
+
+</html>
