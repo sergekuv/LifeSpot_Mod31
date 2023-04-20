@@ -3,23 +3,23 @@ function getReview() {
     let review = {}
     // Сохраним свойство имени
     review["userName"] = prompt("Как вас зовут ?")
-    if(review["userName"] == null){
+    if (review["userName"] == null) {
         return
     }
-    
+
     review["comment"] = prompt("Напишите свой отзыв")
-    if(review["comment"] == null){
+    if (review["comment"] == null) {
         return
     }
     review["date"] = new Date().toLocaleString()
-    
+
     writeReview(review)
 }
 
 const writeReview = review => {
     document.getElementsByClassName('reviews')[0].innerHTML += '    <div class="review-text">\n' +
         `<p> <i> <b>${review['userName']}</b>  ${review['date']}</i></p>` +
-        `<p>${review['comment']}</p>`  +
+        `<p>${review['comment']}</p>` +
         '</div>';
 }
 
@@ -74,12 +74,12 @@ function startListen() {
             initMouseX = event.clientX;
             ssContainer.addEventListener('mousemove', (e) => {
                 let currentMouseX = event.clientX;
-                //console.log(`Mouse X: ${currentMouseX} from startListen`);
+                console.log(`Mouse X: ${currentMouseX} from startListen`);
                 if (currentMouseX - initMouseX > 100) {
                     initMouseX = currentMouseX;
                     plusSlides(1);
                 }
-                
+
             });
         } else {
             isMonitored = false;
@@ -97,30 +97,30 @@ function startListen() {
 
 var mouseXStartPosition;
 function mouseDownProcess(event) {
-    //console.log('--mouseDownProcess started--');
+    console.log('--mouseDownProcess started--');
     mouseXStartPosition = event.clientX;
-    //console.log(mouseXStartPosition);
+    console.log(mouseXStartPosition);
     document.addEventListener('mouseup', (event) => {
         event.preventDefault();
-        //console.log('mouseup happened');
+        console.log('mouseup happened');
     });
     //document.addEventListener('mousemove', (event) => {console.log(`Mouse X: ${event.clientX}, Mouse Y: ${event.clientY}`);});
 }
 
 function mouseUpProcess(event) {
     event.preventDefault();
-    //console.log('--mouseUpProcess started--');
+    console.log('--mouseUpProcess started--');
     let mouseXEndPosition = event.clientX;
-    //console.log(`Mouse X: ${event.clientX}`);
-    //console.log(mouseXEndPosition - mouseXStartPosition);
+    console.log(`Mouse X: ${event.clientX}`);
+    console.log(mouseXEndPosition - mouseXStartPosition);
 
 }
 
 function miceUpImg1(event) {
     event.preventDefault();
-    //console.log('--mouseUpImg1 started--');
+    console.log('--mouseUpImg1 started--');
     let miceUpPosition = event.clientX;
-    //console.log(miceUpPosition);
+    console.log(miceUpPosition);
 
 }
 

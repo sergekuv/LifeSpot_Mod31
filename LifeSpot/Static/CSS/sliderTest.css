@@ -1,0 +1,160 @@
+﻿/* Комбинированный селектор - применяется ко всем элементам */
+header, footer, aside, body, .navbar, .video-container {
+    font-family: "Helvetica 65 Medium", sans-serif;
+}
+
+header, footer, body, .video-container {
+    background-color: linen;
+}
+
+.review-container, .review-button {
+    display: inline-block;
+    margin-top: 0.5em;
+    padding-left: 1%;
+    padding-top: 1%;
+}
+
+.review-text {
+    display: block;
+    margin-top: 0.5em;
+    padding-left: 1%;
+    padding-top: 1%;
+}
+
+
+/* Стили панели навигации */
+.navbar p {
+    color: darkgray;
+    padding-left: 15%;
+}
+
+    /* Стили панели навигации при наведении мышью */
+    .navbar p:hover {
+        color: aliceblue;
+    }
+
+/* Глобальные стили для хедеров на всём сайте */
+header {
+    color: black;
+    padding-left: 1%;
+    padding-top: 1.2%;
+}
+
+/* Стили футера */
+footer {
+    position: relative;
+    bottom: 0;
+    font-size: medium;
+    color: dimgrey;
+    line-height: 66%;
+    padding-left: 1%;
+    padding-bottom: 1%;
+    margin-top: auto;
+}
+
+aside {
+    min-height: 100vh; /* Высота в полный размер. Этот параметр можно убрать, если вы хотите выставлять высоту автоматически */
+    width: 10%;
+    min-width: 200px;
+    z-index: 1;
+    position: absolute; /* Фиксированная позиция сайд-бара. Так он будет оставаться на месте при скроллинге */
+    top: 0; /* Сайдбар будет в самой верхней части страницы */
+    left: 0;
+    background-color: #111; /* Черный цвет фона (задан в виде кода) */
+    overflow-x: hidden; /* Отключаем горизонтальную прокрутку */
+    padding-top: 2%;
+    font-size: large;
+}
+
+body {
+    padding-left: 250px;
+    height: 100%;
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+}
+
+a {
+    text-decoration: none;
+}
+
+input {
+    border: 2px solid darkgrey;
+    border-radius: 2px;
+    outline: none;
+}
+
+    input:focus {
+        border: 2px solid dimgrey;
+    }
+
+* {
+    box-sizing: border-box;
+}
+
+/*-----------------------------*/
+/* -- Для прокрутки картинок - это нужно перенести или удалить после доработки  остальных страниц? --*/
+.slideshowContainer {
+    max-width: 1000px;
+    position: relative;
+    /*margin: auto;*/
+    margin-left: auto;
+    margin-right: auto;
+    cursor: grab;
+    overflow-x: hidden;
+/*    transform: translate(-50%, -50%);*/
+}
+
+
+.mySlides {
+    display: none;
+    width: 100%;
+    /*transform: translateX(200px);*/
+    
+}
+
+.prev, .next {
+    cursor: pointer;
+    position: absolute;
+    top: 50%;
+    width: auto;
+    margin-top: -22px;
+    padding: 16px;
+    color: white;
+    font-weight: bold;
+    font-size: 25px;
+    background-color: rgba(0,0,0,0.2);
+}
+
+.next {
+    right: 0;
+}
+
+    .prev:hover, .next:hover {
+        background-color: rgba(0,0,0,0.5);
+    }
+
+.text {
+    color: ghostwhite;
+    font-size: 18px;
+    padding: 8px 12px;
+    position: absolute;
+    bottom: 8px;
+    width: 100%;
+    text-align: center;
+}
+
+.dot {
+    cursor: pointer;
+    height: 15px;
+    width: 15px;
+    margin: 0 2px;
+    background-color: #bbb;
+    border-radius: 50%;
+    display: inline-block;
+    transition: background-color 0.6s ease;
+}
+
+    .active, .dot:hover {
+        background-color: #777777;
+    }

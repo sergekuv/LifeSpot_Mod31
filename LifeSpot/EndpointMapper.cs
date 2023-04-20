@@ -17,7 +17,7 @@ namespace LifeSpot
         /// <param name="builder"></param>
         public static void MapCss(this IEndpointRouteBuilder builder)
         {
-            string[] cssFiles = { "index.css" };
+            string[] cssFiles = { "common.css", "index.css", "sliderCss.css", "sliderJs.css", "sliderTest.css" };
             foreach (string fileName in cssFiles)
             {
                 builder.MapGet($"/Static/CSS/{fileName}", async context =>
@@ -31,7 +31,7 @@ namespace LifeSpot
 
         public static void MapJs(this IEndpointRouteBuilder builder)
         {
-            string[] jsFiles = {"index.js", "testing.js", "about.js" };
+            string[] jsFiles = {"index.js", "testing.js", "about.js", "slider.js", "sliderTest.js" };
 
             foreach (string fileName in jsFiles)
             {
@@ -48,6 +48,8 @@ namespace LifeSpot
         {
             string footerHtml = File.ReadAllText(Path.Combine(Directory.GetCurrentDirectory(), "Views", "Shared", "footer.html"));
             string sideBarHtml = File.ReadAllText(Path.Combine(Directory.GetCurrentDirectory(), "Views", "Shared", "sidebar.html"));
+            string aboutTopHtml = File.ReadAllText(Path.Combine(Directory.GetCurrentDirectory(), "Views", "Shared", "aboutTop.html"));
+            string aboutBottomHtml = File.ReadAllText(Path.Combine(Directory.GetCurrentDirectory(), "Views", "Shared", "aboutBottom.html"));
 
             builder.MapGet("/", async context =>
             {
@@ -81,27 +83,54 @@ namespace LifeSpot
                 // Загружаем шаблон страницы, вставляя в него элементы
                 var html = new StringBuilder(await File.ReadAllTextAsync(viewPath))
                     .Replace("<!--SIDEBAR-->", sideBarHtml)
+                    .Replace("<!--aboutTop-->", aboutTopHtml)
+                    .Replace("<!--aboutBottom-->", aboutBottomHtml)
                     .Replace("<!--FOOTER-->", footerHtml);
 
                 await context.Response.WriteAsync(html.ToString());
             });
+
+            builder.MapGet("/sliderCss", async context =>
+            {
+                var viewPath = Path.Combine(Directory.GetCurrentDirectory(), "Views", "sliderCss.html");
+
+                var html = new StringBuilder(await File.ReadAllTextAsync(viewPath))
+                    .Replace("<!--SIDEBAR-->", sideBarHtml)
+                    .Replace("<!--aboutTop-->", aboutTopHtml)
+                    .Replace("<!--aboutBottom-->", aboutBottomHtml)
+                    .Replace("<!--FOOTER-->", footerHtml);
+
+                await context.Response.WriteAsync(html.ToString());
+            });
+
+            builder.MapGet("/sliderJs", async context =>
+            {
+                var viewPath = Path.Combine(Directory.GetCurrentDirectory(), "Views", "sliderJs.html");
+
+                var html = new StringBuilder(await File.ReadAllTextAsync(viewPath))
+                    .Replace("<!--SIDEBAR-->", sideBarHtml)
+                    .Replace("<!--aboutTop-->", aboutTopHtml)
+                    .Replace("<!--aboutBottom-->", aboutBottomHtml)
+                    .Replace("<!--FOOTER-->", footerHtml);
+
+                await context.Response.WriteAsync(html.ToString());
+            });
+
+            builder.MapGet("/sliderTest", async context =>
+            {
+                var viewPath = Path.Combine(Directory.GetCurrentDirectory(), "Views", "sliderTest.html");
+
+                // Загружаем шаблон страницы, вставляя в него элементы
+                var html = new StringBuilder(await File.ReadAllTextAsync(viewPath))
+                    .Replace("<!--SIDEBAR-->", sideBarHtml)
+                    .Replace("<!--aboutTop-->", aboutTopHtml)
+                    .Replace("<!--aboutBottom-->", aboutBottomHtml)
+                    .Replace("<!--FOOTER-->", footerHtml);
+
+                await context.Response.WriteAsync(html.ToString());
+            });
+
+
         }
-
-        //public static void MapImg(this IEndpointRouteBuilder builder)
-        //{
-        //    string[] imgFiles = { "1.jpg", "2.jpg", "3.jpg" };
-
-        //    foreach (string fileName in imgFiles)
-        //    {
-        //        builder.MapGet($"/Static/Images/{fileName}", async context =>
-        //        {
-        //            string imgPath = Path.Combine(Directory.GetCurrentDirectory(), "Static", "Images", fileName);
-        //            string img = await File.ReadAllTextAsync(imgPath);
-        //            await context.Response.WriteAsync(img);
-        //        });
-        //    }
-        //}
-
-
     }
 }
